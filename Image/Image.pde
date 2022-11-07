@@ -32,7 +32,9 @@ if ( widthLarger == true) imageWidthRatio = largerDimension / largerDimension;
 if ( widthLarger == true) imageHeightRatio = smallerDimension / largerDimension;
 if ( heightLarger == true) imageWidthRatio = smallerDimension / largerDimension;
 if ( heightLarger == true) imageHeightRatio = largerDimension / largerDimension;
-
+//
+pidWidthAdjusted = picWidth * imageWidthRatio;
+picHeightAdjusted = picHeight = imageHeightRatio;
 //Population
 pic = loadImage("../Images Used/41xxXiE4nsL._AC_.jpg");
 imageBackgroundX = appWidth*0;
