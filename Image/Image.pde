@@ -11,7 +11,7 @@ appWidth = width;
 appHeight = height;
 //
 //Population
-pic = loadImage("../Images Used/438-4382667_princess-twilight-sparkle-my-little-pony-twilight-sparkle.png");
+pic = loadImage("../Images Used/41xxXiE4nsL._AC_.jpg");
 imageBackgroundX = appWidth*0;
 imageBackgroundY = appHeight*0;
 imageBackgroundWidth = appWidth-1;
