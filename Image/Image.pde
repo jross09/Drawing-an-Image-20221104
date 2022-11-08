@@ -4,11 +4,12 @@
 int appWidth, appHeight;
 float largerDimension, smallerDimension;
 Boolean widthLarger = false, heightLarger = false;
+float imageWidthRatio=0.0, imageHeightRatio=0.0;
 float imageBackgroundX, imageBackgroundY, imageBackgroundWidth, imageBackgroundHeight;
 PImage pic;
 Boolean nightMode=false;
 //
-size(800, 600); //Landscape
+size(1000, 800); //Landscape
 //Copy Display Orientation from Hello World
 appWidth = width;
 appHeight = height;
@@ -28,14 +29,37 @@ largerDimension = picHeight;
 smallerDimension = picWidth;
 heightLarger = true;
 }
-//
+/* Older algorithm
 if ( widthLarger == true) imageWidthRatio = largerDimension / largerDimension;
 if ( widthLarger == true) imageHeightRatio = smallerDimension / largerDimension;
 if ( heightLarger == true) imageWidthRatio = smallerDimension / largerDimension;
 if ( heightLarger == true) imageHeightRatio = largerDimension / largerDimension;
+*/
+float picWidthAdjusted=0.0, picHeightAdjusted=0.0; 
+//Better Image Streth Algorithm
+if (appWidth >= picWidth) {
+  picWidthAdjusted = picWidth;
+  if ( widthLarger == true) imageWidthRatio = largerDimension / largerDimension;
+  if ( heightLarger == true) imageWidthRatio = smallerDimension / largerDimension;
+} else {
+  //Image smaller than CANVAS needs seperate algorithm
+  }
+if (appHeight >= picHeight) {
+  picHeightAdjusted = (picHeight);
+   if ( widthLarger == true) imageHeightRatio = smallerDimension / largerDimension;
+   if ( heightLarger == true) imageHeightRatio = largerDimension / largerDimension;
+} else {
+ //Image smaller than CANVAS needs seperate algorithm
+}
+println (appWidth, imageWidthRatio);
+println (appHeight, imageHeightRatio);
+picWidthAdjusted = appWidth * imageWidthRatio;
+picHeightAdjusted = appHeight * imageHeightRatio;
 //
-pidWidthAdjusted = picWidth * imageWidthRatio;
-picHeightAdjusted = picHeight = imageHeightRatio;
+//Developer verified variables
+println(appWidth, picWidth, picWidthAdjusted);
+println(appHeight, picHeight, picHeightAdjusted);
+//
 //Population
 pic = loadImage("../Images Used/41xxXiE4nsL._AC_.jpg");
 imageBackgroundX = appWidth*0;
@@ -50,4 +74,5 @@ rect(imageBackgroundX, imageBackgroundY, imageBackgroundWidth, imageBackgroundHe
 if (nightMode == false)tint(255, 128); //Gray Scale: use 1/2 tint value for white (i.e. 128/256=1/2)
 if (nightMode == true)tint(128, 128, 50); //RGB: Night Mode
 //
-image(pic, imageBackgroundX, imageBackgroundY, imageBackgroundWidth, imageBackgroundHeight);
+//image(pic, imageBackgroundX, imageBackgroundY, imageBackgroundWidth, imageBackgroundHeight);
+image(pic, imageBackgroundX, imageBackgroundY, picWidthAdjusted, picHeightAdjusted);
