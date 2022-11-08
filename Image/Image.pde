@@ -8,13 +8,14 @@ float imageBackgroundX, imageBackgroundY, imageBackgroundWidth, imageBackgroundH
 PImage pic;
 Boolean nightMode=false;
 //
-size(1000, 800); //Landscape
+size(800, 600); //Landscape
 //Copy Display Orientation from Hello World
 appWidth = width;
 appHeight = height;
 //
 //Aspect Raio Calculations
 //41xxXiE4nsL._AC_.jpg
+//Note: dimensions are found in the image file/ right click/ properties/ details
 int picWidth = 500;
 int picHeight = 500;
 //Image Orientation: Landscape, Portrait, Square
