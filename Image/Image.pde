@@ -3,7 +3,7 @@
 //Global Variables
 int appWidth, appHeight;
 Boolean widthLarger = false, heightLarger = false;
-float imageWidthRatio=0.0, imageHeightRatio=0.0;
+float picWidthAdjusted=0.0, picHeightAdjusted=0.0;
 float imageBackgroundX, imageBackgroundY, imageBackgroundWidth, imageBackgroundHeight;
 PImage pic;
 Boolean nightMode=false;
@@ -33,8 +33,8 @@ void setup()
     heightLarger = true;
   }
   //
-  float picWidthAdjusted=0.0, picHeightAdjusted=0.0;
   //Teaching example, width is known to be larger
+  float imageWidthRatio=0.0, imageHeightRatio=0.0;
   //Better Image Stretch Algorithm, smaller image to larger CANVAS
   if ( appWidth >= picWidth ) {
     picWidthAdjusted = appWidth;
@@ -62,34 +62,46 @@ void setup()
   println("Image dimensions are:", picWidth, picHeight);
   println("adjusted Image dimensions are (stretch is goal):", picWidthAdjusted, picHeightAdjusted);
   //
+  //Population
+  pic = loadImage("../Images Used/41xxXiE4nsL._AC_.jpg");
+  imageBackgroundX = appWidth*0;
+  imageBackgroundY = appHeight*0;
+  imageBackgroundWidth = appWidth-1;
+  imageBackgroundHeight = appHeight-1;
+  //
+  //Rectangle Layout and Image drawing to CANVAS
+  rect(imageBackgroundX, imageBackgroundY, imageBackgroundWidth, imageBackgroundHeight);
+  //
+  //Background Image must be in single executed code
+  if (nightMode == false)tint(255, 64); //Gray Scale: use 1/2 tint value for white (i.e. 128/256=1/2)
+  //image(pic, imageBackgroundX, imageBackgroundY, imageBackgroundWidth, imageBackgroundHeight);
+  image(pic, imageBackgroundX, imageBackgroundY, picWidthAdjusted, picHeightAdjusted);
 }//End setup
 //
-void draw() {}//End draw
+void draw() 
+{
+  if (nightMode == true) {
+   //RGB tint() works in draw()
+  
+  }
+}//End draw
+//
 void keyPressed() {}//End keyPressed
-void mousePressed() {}//End mousePressed
 //
-
-
-picWidthAdjusted = appWidth * imageWidthRatio;
-picHeightAdjusted = appHeight * imageHeightRatio;
+void mousePressed() {
+  //
+  //Mouse Pressed will control background image
+  if(mouseButton == LEFT){
+  nightMode = true;
+  tint(225, 50); //Gray Scale: use 1/2 tint value for white
+  image(pic, imageBackgroundX, imageBackgroundY, picWidthAdjusted, picHeightAdjusted);
+  //
+  }
+  if(mouseButton == RIGHT) 
+  nightMode = false;
+  tint(128, 128, 50); //RGB: Night Mode
+  image(pic, imageBackgroundX, imageBackgroundY, picWidthAdjusted, picHeightAdjusted);
+}
+//End mousePressed
 //
-//Developer verified variables
-println(appWidth, picWidth, picWidthAdjusted);
-println(appHeight, picHeight, picHeightAdjusted);
-//
-//Population
-pic = loadImage("../Images Used/41xxXiE4nsL._AC_.jpg");
-imageBackgroundX = appWidth*0;
-imageBackgroundY = appHeight*0;
-imageBackgroundWidth = appWidth-1;
-imageBackgroundHeight = appHeight-1;
-//
-//Rectangle Layout and Image drawing to CANVAS
-rect(imageBackgroundX, imageBackgroundY, imageBackgroundWidth, imageBackgroundHeight);
-//
-//if () {} else for a Binary Choice, no single IF
-if (nightMode == false)tint(255, 128); //Gray Scale: use 1/2 tint value for white (i.e. 128/256=1/2)
-if (nightMode == true)tint(128, 128, 50); //RGB: Night Mode
-//
-//image(pic, imageBackgroundX, imageBackgroundY, imageBackgroundWidth, imageBackgroundHeight);
-image(pic, imageBackgroundX, imageBackgroundY, picWidthAdjusted, picHeightAdjusted);
+//End Main Program
