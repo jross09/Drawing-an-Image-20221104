@@ -5,6 +5,8 @@ int appWidth, appHeight;
 Boolean widthLarger = false, heightLarger = false;
 float picWidthAdjusted=0.0, picHeightAdjusted=0.0;
 float imageBackgroundX, imageBackgroundY, imageBackgroundWidth, imageBackgroundHeight;
+float topHalfX, topHalfY, topHalfWidth, topHalfHeight;
+float bottomHalfX, bottomHalfY, bottomHalfWidth, bottomHalfHeight;
 PImage pic;
 Boolean nightMode=false;
 int tintDayMode=255, tintDayModeOpacity=50;
@@ -70,6 +72,14 @@ void setup()
   imageBackgroundY = appHeight*0;
   imageBackgroundWidth = appWidth-1;
   imageBackgroundHeight = appHeight-1;
+  topHalfX = appWidth * 1/4;
+  topHalfY = appHeight * 1/20;
+  topHalfWidth = appWidth * 1/2;
+  topHalfHeight = appHeight * 8/20;
+  bottomHalfX = appWidth * 1/2;
+  bottomHalfY = appHeight * 3/4;
+  bottomHalfWidth = appWidth * 1/4;
+  bottomHalfHeight = appHeight * 4/20;
   //
   //Rectangle Layout and Image drawing to CANVAS
   rect(imageBackgroundX, imageBackgroundY, imageBackgroundWidth, imageBackgroundHeight);
@@ -83,7 +93,12 @@ void setup()
   image(pic, imageBackgroundX, imageBackgroundY, picWidthAdjusted, picHeightAdjusted);
 }//End setup
 //
-void draw() {}//End draw
+void draw() 
+{
+  image(topHalfX, topHalfY, topHalfWidth, topHalfHeight);
+  image(bottomHalfX, bottomHalfY, bottomHalfWidth, bottomHalfHeight);
+  
+}//End draw
 //
 void keyPressed() {}//End keyPressed
 //
