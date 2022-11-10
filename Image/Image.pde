@@ -7,10 +7,12 @@ float picWidthAdjusted=0.0, picHeightAdjusted=0.0;
 float imageBackgroundX, imageBackgroundY, imageBackgroundWidth, imageBackgroundHeight;
 PImage pic;
 Boolean nightMode=false;
+int tintDayMode=255, tintDayModeOpacity=50;
+int tintRed=64, tintGreen=64, tintBlue=40, tintNightModeOpacity=85;
 //
 void setup() 
 {
- size(1000, 800); //Landscape
+ size(800, 600); //Landscape
   //Copy Display Algorithm from Hello World
   appWidth = width;
   appHeight = height;
@@ -71,20 +73,17 @@ void setup()
   //
   //Rectangle Layout and Image drawing to CANVAS
   rect(imageBackgroundX, imageBackgroundY, imageBackgroundWidth, imageBackgroundHeight);
+  rect( topHalfX, topHalfY, topHalfWidth, topHalfHeight ); //Top half
+  rect( bottomHalfX, bottomHalfY, bottomHalfWidth, bottomHalfHeight ); //Bottom half
   //
   //Background Image must be in single executed code
-  if (nightMode == false)tint(255, 64); //Gray Scale: use 1/2 tint value for white (i.e. 128/256=1/2)
+  if (nightMode == false)tint(tintDayMode, tintDayModeOpacity); //Gray Scale: use 1/2 tint value for white (i.e. 128/256=1/2)
+  if (nightMode == true) tint(tintRed, tintGreen, tintBlue, tintNightModeOpacity);
   //image(pic, imageBackgroundX, imageBackgroundY, imageBackgroundWidth, imageBackgroundHeight);
   image(pic, imageBackgroundX, imageBackgroundY, picWidthAdjusted, picHeightAdjusted);
 }//End setup
 //
-void draw() 
-{
-  if (nightMode == true) {
-   //RGB tint() works in draw()
-  
-  }
-}//End draw
+void draw() {}//End draw
 //
 void keyPressed() {}//End keyPressed
 //
@@ -92,16 +91,18 @@ void mousePressed() {
   //
   //Mouse Pressed will control background image
   if(mouseButton == LEFT){
-  nightMode = true;
-  tint(225, 50); //Gray Scale: use 1/2 tint value for white
+  nightMode = false;
+  rect(imageBackgroundX, imageBackgroundY, imageBackgroundWidth, imageBackgroundHeight);
+  tint(tintDayMode, tintDayModeOpacity); //Gray Scale: use 1/2 tint value for white
   image(pic, imageBackgroundX, imageBackgroundY, picWidthAdjusted, picHeightAdjusted);
   //
   }
-  if(mouseButton == RIGHT) 
-  nightMode = false;
-  tint(128, 128, 50); //RGB: Night Mode
+  if(mouseButton == RIGHT) {
+  nightMode = true;
+  rect(imageBackgroundX, imageBackgroundY, imageBackgroundWidth, imageBackgroundHeight);
+  tint(tintRed, tintGreen, tintBlue, tintNightModeOpacity); //RGB: Night Mode
   image(pic, imageBackgroundX, imageBackgroundY, picWidthAdjusted, picHeightAdjusted);
-}
-//End mousePressed
+  }
+}//End mousePressed
 //
 //End Main Program
