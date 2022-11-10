@@ -3,11 +3,12 @@
 //Global Variables
 int appWidth, appHeight;
 Boolean widthLarger = false, heightLarger = false;
+Boolean widthLarger2 = false, heightLarger2 = false;
 float picWidthAdjusted=0.0, picHeightAdjusted=0.0;
 float imageBackgroundX, imageBackgroundY, imageBackgroundWidth, imageBackgroundHeight;
 float topHalfX, topHalfY, topHalfWidth, topHalfHeight;
 float bottomHalfX, bottomHalfY, bottomHalfWidth, bottomHalfHeight;
-PImage pic;
+PImage pic, pic2, pic3;
 Boolean nightMode=false;
 int tintDayMode=255, tintDayModeOpacity=50;
 int tintRed=64, tintGreen=64, tintBlue=40, tintNightModeOpacity=85;
@@ -24,8 +25,12 @@ void setup()
   //Note: Dimensions are found in the image file / Right Click / Properties / Details
   int picWidth = 800;
   int picHeight = 600;
+  int pic2Width = 720; //Landscape
+  int pic2Height = 540;//Landscape
+  //int pic3Width = ; //portrait
+  //int pic3Height = ; //portrait
   //
-  float smallerDimension, largerDimension;
+  float smallerDimension, largerDimension, smallerDimension2, largerDimension2;
   //Image Orientation: Landscape, Portrait, Square
   if ( picWidth >= picHeight ) { //True if Landscape or Square
     largerDimension = picWidth;
@@ -35,6 +40,16 @@ void setup()
     largerDimension = picHeight;
     smallerDimension = picWidth;
     heightLarger = true;
+  }
+  if ( pic2Width >= pic2Height ) { //True if Landscape or Square
+    largerDimension2 = pic2Width;
+    smallerDimension2 = pic2Height;
+    widthLarger2 = true;
+    //Landscape large Image to larger space OR smaller space
+  } else { //False if Portrait
+    largerDimension2 = pic2Height;
+    smallerDimension2 = pic2Width;
+    heightLarger2 = true;
   }
   //
   //Teaching example, width is known to be larger
@@ -67,7 +82,9 @@ void setup()
   println("adjusted Image dimensions are (stretch is goal):", picWidthAdjusted, picHeightAdjusted);
   //
   //Population
-  pic = loadImage("../Images Used/41xxXiE4nsL._AC_.jpg");
+  pic = loadImage("../Images Used/Landscape/41xxXiE4nsL._AC_.jpg");
+  pic2 = loadImage("../Images Used/Landscape/619d130e28000009387eb078.jfif");
+  //pic3 = loadImage("../Images Used/");
   imageBackgroundX = appWidth*0;
   imageBackgroundY = appHeight*0;
   imageBackgroundWidth = appWidth-1;
@@ -95,8 +112,8 @@ void setup()
 //
 void draw() 
 {
-  image(topHalfX, topHalfY, topHalfWidth, topHalfHeight);
-  image(bottomHalfX, bottomHalfY, bottomHalfWidth, bottomHalfHeight);
+  image(pic2, topHalfX, topHalfY, topHalfWidth, topHalfHeight);
+  //image(pic3, bottomHalfX, bottomHalfY, bottomHalfWidth, bottomHalfHeight);
   
 }//End draw
 //
