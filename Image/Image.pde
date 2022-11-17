@@ -22,7 +22,7 @@ void setup()
   //Population
   pic = loadImage("../Images Used/Landscape/41xxXiE4nsL._AC_.jpg");
   pic2 = loadImage("../Images Used/Landscape/sheep-closeup-eating-grass.jpg");
-  //pic3 = loadImage("");
+  pic3 = loadImage("../Images Used/Portrait/images.jfif");
   backgroundImageX = appWidth*0;
   backgroundImageY = appHeight*0;
   backgroundImageWidth = appWidth-1;
@@ -67,7 +67,7 @@ void setup()
     picHeightAdjusted1 = backgroundImageHeight; //from rect() layout
     imageWidthRatio1 = smallerDimension1 / largerDimension1;
     picWidthAdjusted1 = picHeightAdjusted1 * imageWidthRatio1;
-  } else { //False if Portrait
+    //
     largerDimension1 = picHeight1;
     smallerDimension1 = picWidth1;
   }
@@ -111,14 +111,14 @@ void setup()
   if ( nightMode == false ) tint(tintDayMode, tintDayModeOpacity); //Gray Scale: use 1/2 tint value for white (i.e. 128/256=1/2)
   if ( nightMode == true ) tint(tintRed, tintGreen, tintBlue, tintNightModeOpacity); //RGB: Night Mode
   //image( pic, backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight);
-  image( pic, backgroundImageX, backgroundImageY, picWidthAdjusted, picHeightAdjusted);
+  image( pic, backgroundImageX, backgroundImageY, picWidthAdjusted1, picHeightAdjusted1);
   //
 }//End setup
 //
 void draw()
 {
   image( pic2, topHalfX, topHalfY, picWidthAdjusted2, picHeightAdjusted2 );
-  image( pic3, bottomHalfX, bottomHalfY, bottomHalfWidth3, bottomHalfHeight3 );
+  image( pic3, bottomHalfX, bottomHalfY, ,  );
 }//End draw
 //
 void keyPressed() {
@@ -131,14 +131,14 @@ void mousePressed() {
     nightMode = false;
     rect( backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight );
     tint(tintDayMode, tintDayModeOpacity); //Gray Scale: use 1/2 tint value for white (i.e. 128/256=1/2)
-    image( pic, backgroundImageX, backgroundImageY, picWidthAdjusted, picHeightAdjusted);
+    image( pic, backgroundImageX, backgroundImageY, picWidthAdjusted1, picHeightAdjusted1);
     //
   }
   if (mouseButton == RIGHT) {
     nightMode = true;
     rect( backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight );
     tint(tintRed, tintGreen, tintBlue, tintNightModeOpacity); //RGB: Night Mode
-    image( pic, backgroundImageX, backgroundImageY, picWidthAdjusted, picHeightAdjusted);
+    image( pic, backgroundImageX, backgroundImageY, picWidthAdjusted1, picHeightAdjusted1);
   }
 }//End mousePressed
 //
