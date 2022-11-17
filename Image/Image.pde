@@ -16,6 +16,7 @@ void setup()
 {
   size(800, 600); //Landscape
   //Copy Display Algorithm from Hello World
+  //fullScreen(); //displayWidth, displayHeight
   appWidth = width;
   appHeight = height;
   //
@@ -36,14 +37,15 @@ void setup()
   bottomHalfWidth = appWidth * 1/4;
   bottomHalfHeight = appHeight * 4/20;
   //
-  //Image Dimensions for Aspect Ratio
+  //Image Dimensions for Aspect Ratio: image meta data
+  //Note: meta explored in MP3's or music files
   //Note: Dimensions are found in the image file / Right Click / Properties / Details
-  int picWidth = 800;
-  int picHeight = 600;
-  int pic2Width = 730; //landscape
-  int pic2Height = 400; //landscape
-  //int pic3Width = ; //portrait
-  //int pic3Height = ; //portrait
+  int picWidth1 = 800; //Horse Landscape
+  int picHeight1 = 600;
+  int picWidth2 = 730; //Sheep landscape
+  int picHeight2 = 400; 
+  int picWidth3 = ; //Hydrant portrait
+  int picHeight3 = ; //portrait
   //
   float smallerDimension, largerDimension, smallerDimension2, largerDimension2;
   //Image Orientation: Landscape, Portrait, Square
