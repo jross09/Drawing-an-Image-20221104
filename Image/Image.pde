@@ -22,7 +22,7 @@ void setup()
   //Population
   pic = loadImage("../Images Used/Landscape/41xxXiE4nsL._AC_.jpg");
   pic2 = loadImage("../Images Used/Landscape/sheep-closeup-eating-grass.jpg");
-  pic3 = loadImage("../Images Used/Portrait/images.jfif");
+  pic3 = loadImage("../Images Used/Portrait/Ring-tailed_lemur_(Lemur_catta).jpg");
   backgroundImageX = appWidth*0;
   backgroundImageY = appHeight*0;
   backgroundImageWidth = appWidth-1;
@@ -118,7 +118,7 @@ void setup()
 void draw()
 {
   image( pic2, topHalfX, topHalfY, picWidthAdjusted2, picHeightAdjusted2 );
-  image( pic3, bottomHalfX, bottomHalfY, ,  );
+  image( pic3, bottomHalfX, bottomHalfY, picWidthAdjusted3, picHeightAdjusted3);
 }//End draw
 //
 void keyPressed() {
