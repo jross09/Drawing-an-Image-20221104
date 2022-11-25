@@ -21,8 +21,8 @@ void setup()
   //
   //Population
   pic = loadImage("../Images Used/Landscape/41xxXiE4nsL._AC_.jpg");
-  pic2 = loadImage("../Images Used/Landscape/sheep-closeup-eating-grass.jpg");
-  pic3 = loadImage("../Images Used/Portrait/Ring-tailed_lemur_(Lemur_catta).jpg");
+ // pic2 = loadImage("../Images Used/Landscape/sheep-closeup-eating-grass.jpg");
+  //pic3 = loadImage("../Images Used/Portrait/Ring-tailed_lemur_(Lemur_catta).jpg");
   backgroundImageX = appWidth*0;
   backgroundImageY = appHeight*0;
   backgroundImageWidth = appWidth-1;
@@ -44,7 +44,7 @@ void setup()
   int picWidth2 = 730; //Sheep Landscape
   int picHeight2 = 400; 
   int picWidth3 = 158; //Hydrant Portrait
-  int picHeight3 = 319; 
+  int picHeight3 = 319;
   //
   //Image Orientation: Landscape, Portrait, Square
   //Scaling Image size with aspect ratio requires larger dimension
@@ -71,7 +71,7 @@ void setup()
     largerDimension1 = picHeight1;
     smallerDimension1 = picWidth1;
   }
-  if ( picWidth2 >= picHeight2 ) { //True if Landscape or Square
+  /*if ( picWidth2 >= picHeight2 ) { //True if Landscape or Square
     largerDimension2 = picWidth2;
     smallerDimension2 = picHeight2;
     //
@@ -85,6 +85,7 @@ void setup()
     picHeightAdjusted2 = topHalfHeight; //from rect() layout
     imageWidthRatio2 = smallerDimension2 / largerDimension2;
     picWidthAdjusted2 = picHeightAdjusted2 * imageWidthRatio2;
+   
   }
   if ( picWidth3 >= picHeight3 ) { //True if Landscape or Square
     largerDimension3 = picWidth3;
@@ -101,6 +102,7 @@ void setup()
     imageWidthRatio3 = smallerDimension3 / largerDimension3;
     picWidthAdjusted3 = picHeightAdjusted3 * imageWidthRatio3;
   }
+  */
   //
   //Rectangular Layout and Image Drawing to CANVAS
   rect( backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight );
